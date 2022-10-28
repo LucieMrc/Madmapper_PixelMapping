@@ -14,6 +14,8 @@ Pré-requis :
 
 Pixel mapping c'est quoi
 
+Un pixel de l'image = une led RGB.
+
 ### Le DMX et l'adressage
 On controle la lumière en DMX, une norme de transmission de données qui permet de contrôler 512 canaux avec des valeurs de 0 à 255. On appelle univers DMX une ligne de 512 canaux, et on peux parfois contrôler plusieurs univers simultanément pour contrôler plusieurs lignes de 512 canaux.
 
@@ -31,9 +33,7 @@ On peux ensuite brancher d'autres projecteurs en série en continuant l'adressag
 
 ### L'Artnet
 
-Le protocole Artnet permet de travailler 
-
-
+Le protocole Artnet permet de contrôler plusieurs univers DMX avec un seul réseau, passant le plus souvent à travers des câbles Ethernet.
 
 ## 1. Avec boîter DMX
 
@@ -62,6 +62,18 @@ Aller dans l'onglet Fixtures et créer une nouvelle fixture DMX en cliquant sur 
 Choisir le channel d'adresse de la light.
 
 ![Screenshot de l'interface de MadMapper](./images/screen4.png)
+
+Dans les paramètres de la fixture, on peux ensuite cliquer sur `Edit` dans la partie Fixture Library.
+
+![Screenshot de l'interface de MadMapper](./images/screen10.png)
+
+Les paramètres de la fixture apparaîssent :
+- la taille en largeur correspondant au nombre de led sur la barre
+- la taille en hauteur de 1
+- le type de pixel, en fonction du type de LED, RGB
+- la taille des pixels qui dépend du type de pixel.
+
+![Screenshot de l'interface de MadMapper](./images/screen13.png)
 
 ## 2. En Artnet
 
@@ -102,9 +114,14 @@ En cliquant sur `Import...`, on peux importer les modèles de fixtures télécha
 
 ![Screenshot de l'interface de MadMapper](./images/screen11.png)
 
-
+Le modèle des barres de LED apparaît et on a bien :
+- la taille en largeur de 120 correspondant au nombre de led sur la barre
+- la taille en hauteur de 1
+- la taille des pixels de 4, pour RGBW.
 
 ![Screenshot de l'interface de MadMapper](./images/screen12.png)
+
+
 
 ## 3. Communication
 
