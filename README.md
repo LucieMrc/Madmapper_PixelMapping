@@ -1,4 +1,4 @@
-# Madmapper_LedMapping
+# Madmapper_PixelMapping
 
 Préface : 
 c'est mieux de maîtriser un peu MadMapper ou au moins d'avoir lu le tuto [MadMapper_2spi](https://github.com/LucieMrc/Madmapper_2spi).
@@ -8,13 +8,40 @@ c'est mieux de maîtriser un peu MadMapper ou au moins d'avoir lu le tuto [MadMa
 Pré-requis :
 - Avoir des barres LED controlâbles en DMX + un boîtier DMX-USB, ou être à l'atelier avec les boîtiers Artnet.
 
-## Avec boîter DMX
+## Introduction - point technique
+
+### Le pixel mapping
+
+Pixel mapping c'est quoi
+
+### Le DMX et l'adressage
+On controle la lumière en DMX, une norme de transmission de données qui permet de contrôler 512 canaux avec des valeurs de 0 à 255. On appelle univers DMX une ligne de 512 canaux, et on peux parfois contrôler plusieurs univers simultanément pour contrôler plusieurs lignes de 512 canaux.
+
+On branche les projecteurs en série avec des câbles DMX et on les adresse en fonction du nombre de canaux qu'ils utilisent.
+
+Par exemple, si on branche deux projecteurs RGB utilisant 3 canaux chacun (R, G et B) en série, on pourra adresser le premier projecteur en 1 et le second en 4. On utilise ainsi 6 canaux :
+- 1 : R premier projecteur
+- 2 : G premier projecteur
+- 3 : B premier projecteur
+- 4 : R second projecteur
+- 5 : G second projecteur
+- 6 : B second projecteur
+
+On peux ensuite brancher d'autres projecteurs en série en continuant l'adressage selon le nombre de canaux utilisés par chaque projecteur.
+
+### L'Artnet
+
+Le protocole Artnet permet de travailler 
+
+
+
+## 1. Avec boîter DMX
 
 ### Branchements DMX
 
 Choisir l'adresse
 
-tout brancher
+Tout brancher
 
 Boitier DMX USB
 
@@ -36,7 +63,7 @@ Choisir le channel d'adresse de la light.
 
 ![Screenshot de l'interface de MadMapper](./images/screen4.png)
 
-## En Artnet
+## 2. En Artnet
 
 ### Branchements et mise en réseau
 
@@ -60,9 +87,26 @@ En cochant `Use Unicast`, les fixtures detectées devraient apparaître : ici LE
 
 ### Créer les fixtures
 
-Aller dans l'onglet Fxitures.
+Aller dans l'onglet Fixtures et créer une nouvelle fixture DMX en cliquant sur le bouton `DMX +`.
 
-## Communication
+![Screenshot de l'interface de MadMapper](./images/screen3.png)
+
+Pour les barres de LED de l'atelier, télécharger le fichier `fixture1m.mmfl` ou `fixture_2m.mmfl` en fonction de la taille des barres.
+
+Dans les paramètres de la fixture, on peux ensuite cliquer sur `Edit` dans la partie Fixture Library.
+
+![Screenshot de l'interface de MadMapper](./images/screen10.png)
+
+On ouvre ainsi le menu `Fixture Editor`, avec une liste de fixtures pré-définies. 
+En cliquant sur `Import...`, on peux importer les modèles de fixtures téléchargées.
+
+![Screenshot de l'interface de MadMapper](./images/screen11.png)
+
+
+
+![Screenshot de l'interface de MadMapper](./images/screen12.png)
+
+## 3. Communication
 
 Pour envoyer de la vidéo en temps réel depuis TouchDesigner par exemple, on utilise [Spout](https://spout.zeal.co) (sous windows) ou [Syphon](http://syphon.v002.info) (sous mac).
 Spout/Syphon permet d'envoyer de la vidéo en temps réel d'un logiciel à un autre. 
