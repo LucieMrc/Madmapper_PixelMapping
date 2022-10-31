@@ -71,9 +71,11 @@ Les paramètres de la fixture apparaîssent :
 - la taille en largeur correspondant au nombre de led sur la barre
 - la taille en hauteur de 1
 - le type de pixel, en fonction du type de LED, RGB
-- la taille des pixels qui dépend du type de pixel.
+- la taille des pixels qui dépend du type de pixel
 
 ![Screenshot de l'interface de MadMapper](./images/screen13.png)
+
+Le nombre de canaux utilisés par la fixture est (nombre de led)*(taille des pixels).
 
 ## 2. En Artnet
 
@@ -121,7 +123,9 @@ Le modèle des barres de LED apparaît et on a bien :
 
 ![Screenshot de l'interface de MadMapper](./images/screen12.png)
 
+### Mise en place dans l'espace
 
+Dans le cas de 9 barres led mises en place en trois rangs de 3 barres verticales.
 
 ## 3. Communication
 
