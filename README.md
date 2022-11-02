@@ -1,11 +1,11 @@
 # Madmapper_PixelMapping
 
+**Ou comment sortir un visuel sur des barres LED en pixel mapping.**
+
 Préface : 
 c'est mieux de maîtriser un peu MadMapper ou au moins d'avoir lu le tuto [MadMapper_2spi](https://github.com/LucieMrc/Madmapper_2spi).
 
-**Ou comment sortir un visuel sur des barres LED en pixel mapping.**
-
-Pré-requis :
+Prérequis :
 - Avoir des barres LED controlâbles en DMX + un boîtier DMX-USB, ou être à l'atelier avec les boîtiers Artnet.
 
 ## Introduction - point technique
@@ -39,11 +39,9 @@ Le protocole Artnet permet de contrôler plusieurs univers DMX avec un seul rés
 
 ### Branchements DMX
 
-Choisir l'adresse
+Choisir l'adresse sur la barre LED.
 
-Tout brancher
-
-Boitier DMX USB
+Tout brancher : barre LED > DMX > boîtier DMX > USB > ordinateur.
 
 ### Mise en place dans Madmapper
 
@@ -81,7 +79,7 @@ Le nombre de canaux utilisés par la fixture est (nombre de led)*(taille des pix
 
 ### Branchements et mise en réseau
 
-Avec nos boîtiers + un modem + le tout relié en câbles ethernets à l'ordinateur.
+Avec nos boîtiers (2.0.0.1, 2.0.0.2, 2.0.0.3, 2.0.0.4) + un modem + le tout relié en câbles ethernets à l'ordinateur.
 
 Couper la wifi de l'ordinateur pour être uniquement sur le réseau ethernet.
 
@@ -125,7 +123,38 @@ Le modèle des barres de LED apparaît et on a bien :
 
 ### Mise en place dans l'espace
 
-Dans le cas de 9 barres led mises en place en trois rangs de 3 barres verticales.
+Dans le cas de 9 barres led à la verticale, mises en place en trois rangs de 3 barres verticales.
+
+Le but est d'envoyer une première texture sur les trois barres de face, une seconde sur les 3 barres du milieu, et une troisième sur les barres du fond.
+
+Barre LED > Barre LED > Barre LED > Boîtier Artnet > câble ethernet > modem > câble ethernet > ordinateur.
+
+![Screenshot de l'interface de MadMapper](./images/synonptique.png)
+
+Dans la table de routage Artnet par défaut dans les output DMX de Madmapper, chaque adresse IP de boîtier renvoie 6 univers (de 0 à 5). 
+
+Étant donné que l'on 3 barres LED sur chaque boîtier, 3 barres de 60 LED, chacun des pixels ayant 4 valeurs (RGBW), 3 * 60 * 4 = 720, soit minimum deux univers DMX.
+
+On laisse donc coché les deux premiers univers de chaque adresse IP, le premier boîtier garde les univers 0 et 1, puis on change le numéro d'univers des autres boîtiers.
+Les univers 0 et 1 du boîtier 2 et 3 deviennent donc 2 et 3, et 4 et 5 respectivement.
+
+![Screenshot de l'interface de MadMapper](./images/screen14.png)
+
+Les seuls univers actifs sont donc 6 univers, de 0 à 5, deux pour chaque boîtier.
+
+Afin d'envoyer la même texture sur les barres trois par trois, on crée une première barre LED avec la fixture importée. L'addresse de la première barre est donc univers 0, channel 1.
+
+![Screenshot de l'interface de MadMapper](./images/screen17.png)
+
+Ensuite, il suffit de copier-coller cette barre deux fois. Les adresses s'enchaînent automatiquement, et il faut placer les barres sur la texture en les collant et les enchaînant.
+
+![Screenshot de l'interface de MadMapper](./images/screen16.png)
+
+Pour envoyer trois textures sur chaque rang de barres LED, le plus simple est de créer des groupes et envoyer la texture sur le groupe.
+
+Chaque groupe a les adresses suivantes (voir également le synoptique) :
+
+![Screenshot de l'interface de MadMapper](./images/screen15.png)
 
 ## 3. Communication
 
@@ -143,6 +172,8 @@ On ouvre ensuite Syphon Recorder, qui détecte directement la sortie vidéo de T
 Dans MadMapper, dans l'onglet des textures, une catégorie Syphon apparaît automatiquement et permet de sélectionner la sortie de TouchDesigner.
 
 ![Screenshot de l'interface de MadMapper](./images/screen9.png)
+
+
 
 ## Fin
 
