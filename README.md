@@ -174,9 +174,6 @@ Dans MadMapper, dans l'onglet des textures, une catégorie Syphon apparaît auto
 ![Screenshot de l'interface de MadMapper](./images/screen9.png)
 
 
-
-## Fin
-
 ## Pour aller + loin
 
 Le tuto [MadMapper_OSC](https://github.com/LucieMrc/MadMapper_OSC) pour contrôler des paramètres de MadMapper avec des valeurs envoyés en OSC depuis un téléphone.
