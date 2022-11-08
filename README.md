@@ -8,6 +8,8 @@ c'est mieux de maîtriser un peu MadMapper ou au moins d'avoir lu le tuto [MadMa
 Prérequis :
 - Avoir des barres LED controlâbles en DMX + un boîtier DMX-USB, ou être à l'atelier avec les boîtiers Artnet.
 
+![Screenshot de l'interface de MadMapper](./images/gif1.gif)
+
 ## Introduction - point technique
 
 ### Le pixel mapping
@@ -155,6 +157,8 @@ Pour envoyer trois textures sur chaque rang de barres LED, le plus simple est de
 Chaque groupe a les adresses suivantes (voir également le synoptique) :
 
 ![Screenshot de l'interface de MadMapper](./images/screen15.png)
+
+décallleerrrr dans le temps
 
 ## 3. Communication
 
