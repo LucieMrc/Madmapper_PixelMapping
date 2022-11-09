@@ -1,29 +1,33 @@
 # Madmapper_PixelMapping
 
-**Ou comment sortir un visuel sur des barres LED en pixel mapping.**
+**Ou "comment sortir un visuel sur des barres LED en pixel mapping."**
 
-Préface : 
-c'est mieux de maîtriser un peu MadMapper ou au moins d'avoir lu le tuto [MadMapper_2spi](https://github.com/LucieMrc/Madmapper_2spi).
+Prérequis :
 
-Prérequis : être à l'atelier avec les barres LED et les boîtiers Artnet.
+- c'est mieux de maîtriser un peu MadMapper ou au moins d'avoir lu le tuto [MadMapper_2spi](https://github.com/LucieMrc/Madmapper_2spi).
+- être à l'atelier avec les barres LED et les boîtiers Artnet.
 <!-- - Avoir des barres LED controlâbles en DMX + un boîtier DMX-USB, ou être à l'atelier avec les boîtiers Artnet.-->
 
 ![Screenshot de l'interface de MadMapper](./images/gif1.gif)
 
 ## 0. Introduction - point technique
 
-### Le pixel mapping
+### Le pixel mapping c'est quoi?
 
-Pixel mapping c'est quoi
+Un pixel de l'image = une led RGBW(red, blue, green, white).
 
-Un pixel de l'image = une led RGBW.
+<!-- NOTE je me doute que RGB ils savent mais je veux expliciter le W c'est blanc et pas une sorte d'alpha ou autre -->
 
 ### Le DMX et l'adressage
-On controle la lumière en DMX, une norme de transmission de données qui permet de contrôler 512 canaux avec des valeurs de 0 à 255. On appelle univers DMX une ligne de 512 canaux, et on peux parfois contrôler plusieurs univers simultanément pour contrôler plusieurs lignes de 512 canaux.
+
+On controle la lumière en DMX, une norme de transmission de données qui permet de contrôler 512 canaux avec des valeurs de 0 à 255. On appelle "univers DMX" une ligne de 512 canaux. On peux parfois contrôler plusieurs univers simultanément pour contrôler plusieurs lignes de 512 canaux.
 
 On branche les projecteurs en série avec des câbles DMX et on les adresse en fonction du nombre de canaux qu'ils utilisent.
 
-Par exemple, si on branche deux projecteurs RGB utilisant 3 canaux chacun (R, G et B) en série, on pourra adresser le premier projecteur en 1 et le second en 4. On utilise ainsi 6 canaux :
+<!-- TODO pas ininteressant de mettre un schema rapidos -->
+
+Par exemple, si on branche deux projecteurs RGB utilisant 3 canaux chacun (R, G et B) en série, on adressera le premier projecteur avec la plage d'adresses allant de 1 a 3 et le second de 4 a 6:
+
 - 1 : R premier projecteur
 - 2 : G premier projecteur
 - 3 : B premier projecteur
@@ -87,13 +91,20 @@ Le nombre de canaux utilisés par la fixture est (nombre de led)*(taille des pix
 
 ### Branchements et mise en réseau
 
-<!-- mettre photo d'une barre led avec boitier artnet -->
+<!-- TODO mettre photo d'une barre led avec boitier artnet -->
 
-Avec nos boîtiers (2.0.0.1, 2.0.0.2, 2.0.0.3, 2.0.0.4) + un modem + le tout relié en câbles ethernets à l'ordinateur.
+<!--
+TODO faire la section pour windows? en utilisant la balise <details>
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details
+-->
+
+Avec nos boîtiers (`2.0.0.1`, `2.0.0.2`, `2.0.0.3`, `2.0.0.4`) + un routeur + le tout relié par des câbles ethernets à l'ordinateur.
 
 Couper la wifi de l'ordinateur pour être uniquement sur le réseau ethernet.
 
-Changer l'adresse IP en 2.0.0.100 et le masque en 255.0.0.0. 
+<!-- NOTE probablement pas necessaire mais ca coute rien d'etre sur -->
+
+Changer l'adresse IP en `2.0.0.100` et le masque en `255.0.0.0`. <!-- NOTE j'ai passes les adresses en code inline pour pouvoir mettre le point sans ambiguitee a la fin de cette ligne -->
 Sous mac, dans les paramètres réseaux:
 
 ![Screenshot de l'interface de MadMapper](./images/screen5.png)
@@ -113,18 +124,19 @@ Aller dans l'onglet Fixtures et créer une nouvelle fixture DMX en cliquant sur 
 
 ![Screenshot de l'interface de MadMapper](./images/screen3.png)
 
-Pour les barres de LED de l'atelier, télécharger le fichier `fixture1m.mmfl` ou `fixture_2m.mmfl` en fonction de la taille des barres. Les fichiers sont dans le dossier `Fixtures_atelier` de ce repo.
+Pour les barres de LED de l'atelier, télécharger le fichier `fixture1m.mmfl` ou `fixture_2m.mmfl` en fonction de la taille des barres. Les [fichiers sont dans le dossier `Fixtures_atelier` de ce repo](https://github.com/LucieMrc/Madmapper_PixelMapping/tree/main/fixtures_atelier).
 
 Dans les paramètres de la fixture, on peux ensuite cliquer sur `Edit` dans la partie Fixture Library.
 
 ![Screenshot de l'interface de MadMapper](./images/screen10.png)
 
-On ouvre ainsi le menu `Fixture Editor`, avec une liste de fixtures pré-définies. 
+On ouvre ainsi le menu `Fixture Editor`, avec une liste de fixtures pré-définies.
 En cliquant sur `Import...`, on peux importer les modèles de fixtures téléchargées.
 
 ![Screenshot de l'interface de MadMapper](./images/screen11.png)
 
 Le modèle des barres de LED apparaît et on a bien :
+
 - la taille en largeur de 120 correspondant au nombre de led sur la barre
 - la taille en hauteur de 1
 - la taille des pixels de 4, pour RGBW.
@@ -137,18 +149,20 @@ Dans le cas de 9 barres led à la verticale, mises en place en trois rangs de 3 
 
 Le but est d'envoyer une première texture sur les trois barres de face, une seconde sur les 3 barres du milieu, et une troisième sur les barres du fond.
 
-Barre LED > Barre LED > Barre LED > Boîtier Artnet > câble ethernet > modem > câble ethernet > ordinateur.
+Barre LED > Barre LED > Barre LED > Boîtier Artnet > câble ethernet > routeur > câble ethernet > ordinateur.
 
 ![Screenshot de l'interface de MadMapper](./images/synonptique.png)
 
-Dans la table de routage Artnet par défaut dans les output DMX de Madmapper, chaque adresse IP de boîtier renvoie 6 univers (de 0 à 5). 
+Dans la table de routage Artnet par défaut, dans les output DMX de Madmapper, chaque adresse IP de boîtier renvoie 6 univers (de 0 à 5).
 
-Étant donné que l'on 3 barres LED sur chaque boîtier, 3 barres de 60 LED, chacun des pixels ayant 4 valeurs (RGBW), 3 * 60 * 4 = 720, soit minimum deux univers DMX.
+Étant donné que l'on a 3 barres de 60 LEDs sur chaque boîtier, chacun des pixels ayant 4 valeurs (RGBW), 3 _ 60 _ 4 = 720, cela revient a minimum deux univers DMX.
 
 On laisse donc coché les deux premiers univers de chaque adresse IP, le premier boîtier garde les univers 0 et 1, puis on change le numéro d'univers des autres boîtiers.
 Les univers 0 et 1 du boîtier 2 et 3 deviennent donc 2 et 3, et 4 et 5 respectivement.
 
 ![Screenshot de l'interface de MadMapper](./images/screen14.png)
+
+<!-- NOTE j'ai l'impression que ca va un peu vite a partir de la, mais j'imaginque que quand tu le fait c'est plus clair. -->
 
 Les seuls univers actifs sont donc 6 univers, de 0 à 5, deux pour chaque boîtier.
 
@@ -168,10 +182,12 @@ Chaque groupe a les adresses suivantes (voir également le synoptique) :
 
 décallleerrrr dans le temps
 
+<!-- NOTE je ne comprend pas ^-->
+
 ## 2. Communication
 
 Pour envoyer de la vidéo en temps réel depuis TouchDesigner par exemple, on utilise [Spout](https://spout.zeal.co) (sous windows) ou [Syphon](http://syphon.v002.info) (sous mac).
-Spout/Syphon permet d'envoyer de la vidéo en temps réel d'un logiciel à un autre. 
+Spout/Syphon permet d'envoyer de la vidéo en temps réel d'un logiciel à un autre.
 
 Pour faire TouchDesigner -> Syphon -> MadMapper, il faut tout d'abord créer un node `Syphon Spout Out` et le placer en sortie de ce qu'on veux envoyer.
 
@@ -184,7 +200,6 @@ On ouvre ensuite Syphon Recorder, qui détecte directement la sortie vidéo de T
 Dans MadMapper, dans l'onglet des textures, une catégorie Syphon apparaît automatiquement et permet de sélectionner la sortie de TouchDesigner.
 
 ![Screenshot de l'interface de MadMapper](./images/screen9.png)
-
 
 ## Pour aller + loin
 
