@@ -197,6 +197,14 @@ Dans MadMapper, dans l'onglet des textures, une catégorie Syphon apparaît auto
 
 ![Screenshot de l'interface de MadMapper](./images/screen9.png)
 
+Dans le cas où on veux envoyer trois textures, correspondant à un texture originale, la même avec un délai et la même avec un délai encore supérieure, on peux par exemple créer un `noise` animé, et trois sortie `syphonspoutout`.
+
+On branche le noise tel quel à la première sortie, et on passe par un `cache` pour chacune des deux autres sorties.
+
+On crée l'effet de délai avec le cache en donnant une valeur négative à l'`Output Index` dans les paramètres : ici -20 et -40 pour la sortie 2 et 3 respectivement.
+
+![Screenshot de l'interface de MadMapper](./images/screen18.png)
+
 
 ## Pour aller + loin
 
