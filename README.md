@@ -39,6 +39,21 @@ On peux ensuite brancher d'autres projecteurs en série en continuant l'adressag
 
 Le protocole Artnet permet de contrôler plusieurs univers DMX avec un seul réseau, passant le plus souvent à travers des câbles Ethernet.
 
+### Les boîtiers Artnet de l'atelier
+
+Sur les boîtiers qu'on utilise, il y a deux entrées ethernet, et deux sorties d'alimentation des barres LED. Chaque sortie supporte idéalement 2 barres de 60 leds, avec les univers 0, 1, 2 sur la première sortie et les univers 3, 4, 5 sur la seconde sortie.
+
+Ainsi, si on utilise les boîtiers 2.0.0.1 et 2.0.0.2, avec deux barres sur chacune des deux sorties de chaque boîtiers, les barres des deux boîtiers seront par défaut sur les mêmes univers.
+
+Pour pouvoir les mettre à la suite, il faut modifier les univers dans l'onglet DMX Output des préférences MadMapper.
+Le plus simple est de remapper les univers du second boîtier, de 0 à 5, à 6 à 11. Puis de 12 à 17 si on utilise un troisième boîtier, et ainsi de suite.
+
+![Screenshot de l'interface de MadMapper](./images/schemaledmapping.png)
+
+Sachant que deux barres de 60 leds passent sur un seul univers (1 à 240 pour la première, 241 à 480 pour la seconde), on peux également n'utiliser qu'un univers par sortie, et remapper les univers sur chaque sortie pour avoir 0 et 1 pour le premier boîtier, 2 et 3 pour le second, ainsi de suite, et désactiver les autres. Il suffit ensuite d'adresser les fixtures dans Madmapper accordément.
+
+![Screenshot de l'interface de MadMapper](./images/schemaledmapping2.png)
+
 <!--
 ## 1. Avec boîter DMX
 
@@ -157,6 +172,8 @@ On laisse donc coché les deux premiers univers de chaque adresse IP, le premier
 Les univers 0 et 1 du boîtier 2 et 3 deviennent donc 2 et 3, et 4 et 5 respectivement.
 
 ![Screenshot de l'interface de MadMapper](./images/screen14.png)
+
+*à mettre à jour*
 
 Les seuls univers actifs sont donc 6 univers, de 0 à 5, deux pour chaque boîtier.
 
