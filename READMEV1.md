@@ -168,7 +168,7 @@ En cliquant sur `Import...`, on peux importer les modèles de fixtures télécha
 
 Le modèle des barres de LED apparaît et on a bien :
 
-- la taille en largeur de 60 correspondant au nombre de led sur la barre
+- la taille en largeur de 120 correspondant au nombre de led sur la barre
 - la taille en hauteur de 1
 - la taille des pixels de 4, pour RGBW.
 
