@@ -193,9 +193,9 @@ Les univers 0 et 1 du boîtier 2 et 3 deviennent donc 2 et 3, et 4 et 5 respecti
 
 ![Screenshot de l'interface de MadMapper](./images/screen14.png)
 
-*à mettre à jour*
-
 Les seuls univers actifs sont donc 6 univers, de 0 à 5, deux pour chaque boîtier.
+
+Cette attribution d'univers correspond au fichier `routing_table.madart` dans le dossier `Mapping_DMX_Output` du repo.
 
 Afin d'envoyer la même texture sur les barres trois par trois, on crée une première barre LED avec la fixture importée. L'addresse de la première barre est donc univers 0, channel 1.
 
