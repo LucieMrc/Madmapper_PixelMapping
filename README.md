@@ -9,6 +9,23 @@ Prérequis :
 
 ![Screenshot de l'interface de MadMapper](./images/gif1.gif)
 
+## Sommaire
+
+* [0. Introduction - point technique](#0-introduction---point-technique)<br>
+
+    * [Le pixel mapping, c'est quoi](#le-pixel-mapping-cest-quoi)<br>
+    * [Le DMX et l'adressage](#le-dmx-et-ladressage)<br>
+    * [L'Artnet](#lartnet)<br>
+* [1. En Artnet](#1-en-artnet)<br>
+    * [Branchements et mise en réseau](#branchements-et-mise-en-réseau)<br>
+    * [Mise en place dans Madmapper](#mise-en-place-dans-madmapper)<br>
+    * [Les boîtiers Artnet de l'atelier](#les-boîtiers-artnet-de-latelier)<br>
+    * [Remapper des univers dans Madmapper](#remapper-des-univers-dans-madmapper)<br>
+    * [Créer les fixtures](#créer-les-fixtures)<br>
+    * [Mise en place dans l'espace](#mise-en-place-dans-lespace)<br>
+* [2. Communication](#1-communication)<br>
+* [Pour aller + loin](#pour-aller--loin)<br>
+
 ## 0. Introduction - point technique
 
 ### Le pixel mapping, c'est quoi
