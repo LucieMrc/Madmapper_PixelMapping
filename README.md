@@ -1,4 +1,4 @@
-# Madmapper_PixelMapping
+# Madmapper PixelMapping
 
 **Ou comment sortir un visuel sur des barres LED en pixel mapping.**
 
@@ -26,7 +26,7 @@ Prérequis :
 * [2. Communication](#1-communication)<br>
 * [Pour aller + loin](#pour-aller--loin)<br>
 
-## 0. Introduction - point technique
+## Introduction - point technique
 
 ### Le pixel mapping, c'est quoi
 
