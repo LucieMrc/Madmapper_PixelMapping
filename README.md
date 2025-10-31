@@ -16,14 +16,14 @@ Prérequis :
     * [Le pixel mapping, c'est quoi](#le-pixel-mapping-cest-quoi)<br>
     * [Le DMX et l'adressage](#le-dmx-et-ladressage)<br>
     * [L'Artnet](#lartnet)<br>
-* [1. En Artnet](#1-en-artnet)<br>
+* [2. En Artnet](#1-en-artnet)<br>
     * [Branchements et mise en réseau](#branchements-et-mise-en-réseau)<br>
     * [Mise en place dans Madmapper](#mise-en-place-dans-madmapper)<br>
     * [Les boîtiers Artnet de l'atelier](#les-boîtiers-artnet-de-latelier)<br>
     * [Remapper des univers dans Madmapper](#remapper-des-univers-dans-madmapper)<br>
     * [Créer les fixtures](#créer-les-fixtures)<br>
     * [Mise en place dans l'espace](#mise-en-place-dans-lespace)<br>
-* [2. Communication](#1-communication)<br>
+* [3. Communication](#1-communication)<br>
 * [Pour aller + loin](#pour-aller--loin)<br>
 
 ## Introduction - point technique
@@ -103,8 +103,26 @@ Le nombre de canaux utilisés par la fixture est (nombre de led)*(taille des pix
 ## 2. En Artnet
 -->
 
+## 2. En DMX seul
 
-## 1. En Artnet
+Pour utiliser les Kratos Beamz de l'atelier, on peux utiliser uniquement le DMX et ainsi chaîner 4 barres et n'envoyer des données que sur un univers.
+
+### Branchements
+
+Connecter le DMX In de la première barre au boîtier Enttec DMX Pro. Brancher le DMX Out au DMX In de la seconde barre, et ainsi de suite jusqu'à la quatrième barre. Brancher le bouchon DMX dans le DMX Out de la quatrième barre.
+
+Dans chacune des barres, faire Set > DMX blabla > 128 CH. 
+
+Puis addresser les barres en fonction de : 1, 129, 257, 385.
+
+### Mise en place dans Madmapper
+
+Aller dans les préférences MadMapper, dans l'onglet DMX Output.
+
+Pour `DMX Output Device` choisir `Artnet`, et pour `Interface` choisir `EnttecPro Out`.
+![Screenshot de l'interface de MadMapper](./images/screen21.png)
+
+## 2. En Artnet
 
 ### Branchements et mise en réseau
 
@@ -234,7 +252,7 @@ L'effet obtenu est un effet de texture qui évolue en 3d, avec un effet très su
 
 ![Screenshot de l'interface de MadMapper](./images/gif2.gif)
 
-## 2. Communication
+## 3. Communication
 
 Pour envoyer de la vidéo en temps réel depuis TouchDesigner par exemple, on utilise [Spout](https://spout.zeal.co) (sous windows) ou [Syphon](http://syphon.v002.info) (sous mac).
 Spout/Syphon permet d'envoyer de la vidéo en temps réel d'un logiciel à un autre.
