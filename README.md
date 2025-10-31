@@ -166,7 +166,7 @@ Cette attribution d'univers correspond au fichier `routingTable_remappage1.madar
 
 ![Screenshot de l'interface de MadMapper](./images/routingTable_remappage1.png)
 
-![Screenshot de l'interface de MadMapper](./images/schemaledmapping.png)
+![Screenshot de l'interface de MadMapper](./images/schemaLedMapping.png)
 
 **Cas 2**
 
@@ -176,7 +176,7 @@ Cette attribution d'univers correspond au fichier `routingTable_remappage2.madar
 
 ![Screenshot de l'interface de MadMapper](./images/routingTable_remappage2.png)
 
-![Screenshot de l'interface de MadMapper](./images/schemaledmapping2.png)
+![Screenshot de l'interface de MadMapper](./images/schemaLedMapping2.png)
 
 Le projet Madmapper correspondant à ce synoptique est le fichier `ProjetExemple_2boitiers.mad` dans ce repo.
 
